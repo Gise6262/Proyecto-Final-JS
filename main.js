@@ -8,25 +8,26 @@
                 }
             }
 
-            const arcoIris = new Producto(1, "Cinta Arco iris", 560, "img/gomitaArcoIris.jpg");
-            const cepilloDientes = new Producto(2, "Cepillo de dientes", 450, "img/gomitaCepilloDientes.jpg");
-            const sandia = new Producto(3, "Gomitas Sandía", 680, "img/gomitasAcidasSandia.jpg");
-            const gusanitosDulces = new Producto(4, "Gusanitos", 625, "img/gomitasGusanitosDulces.jpg");
-            const hamburguesa = new Producto(5, "Hamburguesa", 495, "img/gomitasHamburguesa.jpg");
-            const huevosFritos = new Producto(6, "Huevitos Fritos", 690, "img/gomitasHuevosFritos.jpg");
-            const ositos= new Producto(7, "Ositos", 850, "img/gomitasOsitosFrutales.jpg");
-            const pizza= new Producto(8, "Pizza", 520, "img/gomitasPizza.jpg")
-            const redonditas = new Producto(9, "Redonditas", 499, "img/gomitasredondas.jpg");
-            const cocaCola = new Producto(10, "Coca-Cola", 720, "img/gomitascocacola.jpg");
-            const surtido1 = new Producto(11, "Surtido N°1", 1150, "img/surtido1.jpg");
-            const surtido2 = new Producto(12, "Surtido N°2", 1400, "img/surtido2.jpg");
-            const surtido3 = new Producto(13, "Surtido N°3", 1220, "img/surtido3.jpg");
-            const surtidoLove = new Producto(14, "Surtido Love", 1720, "img/surtido4.jpg");
+            const arcoIris = new Producto(1, "Cinta Arco iris", 200, "img/gomitaArcoIris.jpg");
+            const cepilloDientes = new Producto(2, "Cepillo de dientes", 300, "img/gomitaCepilloDientes.jpg");
+            const sandia = new Producto(3, "Gomitas Sandía", 400, "img/gomitasAcidasSandia.jpg");
+            const gusanitosDulces = new Producto(4, "Gusanitos", 500, "img/gomitasGusanitosDulces.jpg");
+            const hamburguesa = new Producto(5, "Hamburguesa", 600, "img/gomitasHamburguesa.jpg");
+            const huevosFritos = new Producto(6, "Huevitos Fritos", 700, "img/gomitasHuevosFritos.jpg");
+            const ositos= new Producto(7, "Ositos", 800, "img/gomitasOsitosFrutales.jpg");
+            const pizza= new Producto(8, "Pizza", 900, "img/gomitasPizza.jpg")
+            const redonditas = new Producto(9, "Redonditas", 1000, "img/gomitasredondas.jpg");
+            const cocaCola = new Producto(10, "Coca-Cola", 1100, "img/gomitascocacola.jpg");
+            const surtido1 = new Producto(11, "Surtido N°1", 1200, "img/surtido1.jpg");
+            const surtido2 = new Producto(12, "Surtido N°2", 1300, "img/surtido2.jpg");
+            const surtido3 = new Producto(13, "Surtido N°3", 1400, "img/surtido3.jpg");
+            const surtidoLove = new Producto(14, "Surtido Love", 1500, "img/surtido4.jpg");
 
             //array
             const productos = [arcoIris, cepilloDientes, sandia, gusanitosDulces, hamburguesa, huevosFritos, ositos, pizza, redonditas, cocaCola, surtido1, surtido2, surtido3, surtidoLove]
 
             console.log(productos);
+
 
             let carrito = [];
             console.log(carrito);
@@ -58,7 +59,7 @@
                     boton.addEventListener("click", () => {
                         añadirProducto(producto.id);
                     })
-            
+
                 });
             }
             verProductos();
@@ -88,7 +89,7 @@
                 console.log(carrito);
                 containerCarrito.innerHTML ="";
                 carrito.forEach((producto) => {
-                    console.log("Puto")
+                    console.log("rata")
                     const card = document.createElement("div");
                     card.classList.add("col-xl-3", "col-md-6", "col-sm-12");
                     card.innerHTML = `<div class="card">
@@ -143,7 +144,9 @@
                 carrito.splice(indice, 1);
                 lookCarrito();
                 localStorage.setItem("carrito", JSON.stringify(carrito));
+                
             }
+            
             
             const total = document.getElementById("total");
             
@@ -156,12 +159,27 @@
                 total.innerHTML = `Precio Total: $ ${totalCompra}`;
             }
             
+            const btnCompra = document.getElementById("comprar");
+            btnCompra.addEventListener("click", () =>{
+                deletedAllCarrito();
+                Swal.fire({
+                    title: "¡Su compra fue realizada con éxito!",
+                    text: "Muchas Gracias por su compra. Universo Gomita le desea un excelente dia.",
+                    icon: "success",
+                    imageUrl: "https://www.recreoviral.com/wp-content/uploads/2016/09/GATITOS-FELICES-7.jpg",
+                    confirmButtonText: "Aceptar",
+                    background: "#f1e0fb",
+                    backdrop: "#c8a1df "
+
+                })
+            })
+
             const vaciarCarrito = document.getElementById("vaciarCarrito");
             
             vaciarCarrito.addEventListener("click", () => {
                 deletedAllCarrito();
             })
-            
+
             const deletedAllCarrito = () => {
                 console.log(carrito);
                 carrito.forEach(producto =>{
@@ -172,3 +190,25 @@
                 lookCarrito();
                 localStorage.setItem("carrito", JSON.stringify(carrito));
             }
+
+
+            const clientesDest = "https://pixabay.com/api/?key=34480649-d2dad645aa2c60d3119910bbb&q=faces&woman_type=photo&pretty=true";
+
+            const divClientes = document.getElementById("divClientes");
+
+            fetch(clientesDest)
+            .then(respuesta => respuesta.json())
+            .then((datos) => {
+                console.log(datos);
+                mostrarFotos(datos.hits);
+            })
+            .catch(error => console.error('error:' + error));
+
+            function mostrarFotos(datos) {
+                datos.forEach(cliente => {
+                    const img = document.createElement("img");
+                    img.src = cliente.largeImageURL;
+                    divClientes.appendChild(img);
+                })
+            }
+            

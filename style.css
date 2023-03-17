@@ -23,16 +23,15 @@ body {
     display: flex;
     justify-content: center;
 }
-.banner {
-    width: 1900px;
-    height: 200px;
-}
 
 h1 {
-    color: rgb(247, 93, 73);
+    color: rgb(115, 39, 72);
     text-align: center;
     font-size: 150px;
     font-family: 'Annie Use Your Telescope', cursive;
+    background-color: #eb98c6;
+    border-radius: 700px;
+    margin-bottom: 20px;
 }
 
 .card-title {
@@ -105,16 +104,43 @@ h1 {
 .btn {
     background-color: rgb(186, 101, 219);
     color: rgb(255, 255, 255);
+    font-size: 18px;
+    margin-top: 50px;
 }
 .btn:hover {
     background-color:rgb(179, 51, 115) ;
 }
+.btnCompra {
+    background-color:rgb(179, 51, 115) ;
+    color: rgb(255, 255, 255);
+    border-color: rgb(179, 51, 115);
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 30px;
+}
+.btnCompra:hover {
+    background-color: rgb(186, 101, 219);
+}
+
 .precio {
     font-size: 30px;
     font-family: fantasy;
     color: rgb(109, 40, 178);
 } 
-
+.clientesDest {
+    background-color: #623aa3;
+    font-size: 60px;
+    color: #b1e6e4;
+    font-family: 'Annie Use Your Telescope', cursive;
+    text-align: center;
+}
+.divClientes > img {
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+    padding: 20px;
+}
 .footer {
     padding: 60px;
     background-color: rgb(165, 148, 118);
@@ -133,3 +159,4 @@ h1 {
   .icono:hover {
     -webkit-transform:scale(1.4);transform:scale(1.4);
 }
+
